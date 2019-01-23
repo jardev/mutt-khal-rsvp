@@ -266,15 +266,14 @@ if __name__=="__main__":
     if accept_decline != 'DECLINED':
         # Add to khal
         khal_command = get_khal_command(impfile, default_calendar)
-        #execute(khal_command)
+        execute(khal_command)
 
     # send reply via mutt
     mutt_command = get_mutt_command(ans, email_address, accept_decline,
                                     icsfile, pid_path)
     mailtext = "'%s has %s'" % (email_address, accept_decline.lower())
-    print(mutt_command)
     sys.stdin.readline()
-    #execute(mutt_command, mailtext)
+    execute(mutt_command, mailtext)
 
     # delete tempporary files
     os.remove(icsfile)
